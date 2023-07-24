@@ -148,7 +148,7 @@ class store implements \tool_log\log\writer, \core\log\sql_internal_table_reader
         $entry['origin'] = $PAGE->requestorigin;
         $entry['ip'] = $PAGE->requestip;
         $entry['realuserid'] = \core\session\manager::is_loggedinas() ? $GLOBALS['USER']->realuser : null;
-        $entry['referrer'] = get_local_referer();
+        $entry['referrer'] = get_local_referer(false);
 
         $this->buffer[] = $entry;
         $this->count++;
