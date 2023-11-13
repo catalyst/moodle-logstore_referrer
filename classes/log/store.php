@@ -204,6 +204,27 @@ abstract class store implements \tool_log\log\writer, \core\log\sql_internal_tab
     }
 
     /**
+     * Get whether events are present for the given select clause.
+     *
+     * @param string $selectwhere select conditions.
+     * @param array $params params.
+     *
+     * @return bool Whether events available for the given conditions
+     */
+    public function get_events_select_exists(string $selectwhere, array $params): bool {
+        global $DB;
+        if (!$this->init()) {
+            return false;
+        }
+
+        if (!$dbtable = $this->get_config('dbtable')) {
+            return false;
+        }
+
+        return $this->$DB->record_exists_select($dbtable, $selectwhere, $params);
+    }
+
+    /**
      * Are the new events appearing in the reader?
      *
      * @return bool true means new log events are being added, false means no new data will be added
