@@ -27,7 +27,7 @@ namespace logstore_referrer\log;
 
 defined('MOODLE_INTERNAL') || die();
 
-abstract class store implements \tool_log\log\writer, \core\log\sql_internal_table_reader {
+class store implements \tool_log\log\writer, \core\log\sql_internal_table_reader {
     use \tool_log\helper\store,
         \tool_log\helper\buffered_writer,
         \tool_log\helper\reader;
