@@ -221,7 +221,7 @@ class store implements \tool_log\log\writer, \core\log\sql_internal_table_reader
             return false;
         }
 
-        return $this->$DB->record_exists_select($dbtable, $selectwhere, $params);
+        return $DB->record_exists_select($dbtable, $selectwhere, $params);
     }
 
     /**
